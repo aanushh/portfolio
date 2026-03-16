@@ -1,9 +1,10 @@
 ---
+
 ---
 
 <button
   id="back-to-top"
-  class="fixed bottom-8 right-8 p-3 rounded-full bg-secondary border-2 border-theme backdrop-blur-sm text-primary hover:text-accent transition-colors z-50"
+  class="fixed bottom-8 right-8 p-3 rounded-full bg-secondary border-2 border-theme backdrop-blur-sm text-primary hover:text-accent transition-colors z-50 cursor-pointer"
   aria-label="Back to top"
 >
   <svg
@@ -17,12 +18,14 @@
     stroke-linecap="round"
     stroke-linejoin="round"
   >
-    <polyline points="18 15 12 9 6 15" />
+    <polyline points="18 15 12 9 6 15"></polyline>
   </svg>
 </button>
 
 <script is:inline>
-  document.getElementById('back-to-top')?.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  document
+    .getElementById("back-to-top")
+    ?.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 </script>
