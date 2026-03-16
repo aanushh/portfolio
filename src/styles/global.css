@@ -3,33 +3,32 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Lora", ui-serif, Georgia, serif;
+  --font-courier: "Courier New", Courier, monospace;
 }
 
 /* CSS Custom Properties for Theme Colors */
 :root {
   /* Light mode colors - Warm Cream & Gold */
-  --bg-primary: #FAF7F2;
-  --bg-secondary: #F2EDE6;
-  --bg-card: #FFFFFF;
-  --text-primary: #2D2822;
-  --text-secondary: #6B6560;
-  --text-muted: #8A8178;
-  --accent: #B8860B;
-  --border: #E5E0D8;
+  --bg-primary: #faf7f2;
+  --bg-secondary: #f2ede6;
+  --bg-card: #ffffff;
+  --text-primary: #2d2822;
+  --text-secondary: #6b6560;
+  --text-muted: #8a8178;
+  --accent: #b8860b;
+  --border: #e5e0d8;
 }
 
 html.dark {
   /* Dark mode colors - Warm Black & Gold */
-  --bg-primary: #0C0A09;
-  --bg-secondary: #1A1714;
-  --bg-card: #1A1714;
-  --text-primary: #F2EDE6;
-  --text-secondary: #8A8178;
-  --text-muted: #6B6560;
-  --accent: #D4AF37;
-  --border: #3D3833;
+  --bg-primary: #0c0a09;
+  --bg-secondary: #1a1714;
+  --bg-card: #1a1714;
+  --text-primary: #f2ede6;
+  --text-secondary: #8a8178;
+  --text-muted: #6b6560;
+  --accent: #d4af37;
+  --border: #3d3833;
 }
 
 /* Base styles */
@@ -38,10 +37,12 @@ html {
 }
 
 body {
-  @apply antialiased font-sans;
+  @apply antialiased font-courier;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 200ms ease, color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 /* Smooth transitions for theme changes */
@@ -53,14 +54,21 @@ section,
 article,
 div,
 p,
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 span,
 a,
 button,
 li,
 ul,
 ol {
-  transition: background-color 200ms ease, color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 /* Animation utilities */
@@ -102,7 +110,7 @@ a:hover {
 /* Prose styling for content */
 article {
   @apply max-w-full prose prose-img:mx-auto;
-  @apply prose-headings:font-semibold prose-p:font-serif;
+  @apply prose-headings:font-semibold prose-p:font-courier;
 }
 
 article a {
@@ -176,7 +184,7 @@ article a:hover {
 /* Selection styling */
 ::selection {
   background-color: var(--accent);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* Reduced motion support */
@@ -184,18 +192,18 @@ article a:hover {
   html {
     scroll-behavior: auto;
   }
-  
+
   .animate {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  
+
   .animate.show {
     opacity: 1;
     transform: none;
   }
-  
+
   body,
   header,
   footer,
@@ -204,7 +212,12 @@ article a:hover {
   article,
   div,
   p,
-  h1, h2, h3, h4, h5, h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
   span,
   a,
   button,
