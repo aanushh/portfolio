@@ -10,14 +10,19 @@ import Divider from "@components/Divider.astro";
 interface Props {
   title?: string;
   description?: string;
+  shouldIndex?: boolean;
 }
 
-const { title = SITE.NAME, description = SITE.DESCRIPTION } = Astro.props;
+const {
+  title = SITE.NAME,
+  description = SITE.DESCRIPTION,
+  shouldIndex = false,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head title={title} description={description} />
+  <Head title={title} description={description} shouldIndex={shouldIndex} />
 
   <body class="min-h-screen flex flex-col">
     <Header />

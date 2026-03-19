@@ -6,9 +6,15 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  shouldIndex: boolean;
 }
 
-const { title, description, image = "/og-image.png" } = Astro.props;
+const {
+  title,
+  description,
+  image = "/og-image.png",
+  shouldIndex,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -18,6 +24,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="generator" content={Astro.generator} />
+  {
+    shouldIndex ? (
+      <meta name="robots" content="index, follow" />
+    ) : (
+      <meta name="robots" content="noindex, nofollow" />
+    )
+  }
 
   <!-- Canonical URL -->
   <link rel="canonical" href={canonicalURL} />

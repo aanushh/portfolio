@@ -1,0 +1,9 @@
+# What's up nigga, you don't look like a bot?
+
+User-agent: meta-externalagent
+Disallow: *
+
+User-agent: *
+Allow: /blog/*
+Disallow: /projects/*
+Disallow: /work/*
