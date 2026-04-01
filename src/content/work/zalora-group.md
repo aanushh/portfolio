@@ -1,6 +1,6 @@
 ---
-title: "Zalora Group"
-description: "Software Engineer II"
+company: "Zalora Group"
+position: "Software Engineer II"
 date: 2023-07-01
 endDate: 2026-01-31
 location: "Remote"

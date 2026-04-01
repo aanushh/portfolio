@@ -1,6 +1,6 @@
 ---
-title: "Simplain Software Solutions LLC"
-description: "Intern"
+company: "Simplain Software Solutions LLC"
+position: "Intern"
 date: 2019-05-01
 endDate: "2019-06-01"
 location: "Coimbatore, Tamil Nadu, India"

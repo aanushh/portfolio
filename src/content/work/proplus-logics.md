@@ -1,6 +1,6 @@
 ---
-title: "ProPlus Logics Solutions"
-description: "Intern"
+company: "ProPlus Logics Solutions"
+position: "Intern"
 date: 2019-06-01
 endDate: "2019-07-01"
 location: "Coimbatore, Tamil Nadu, India"

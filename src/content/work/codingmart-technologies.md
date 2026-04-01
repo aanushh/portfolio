@@ -1,6 +1,6 @@
 ---
-title: "Codingmart Technologies"
-description: "Product Engineer"
+company: "Codingmart Technologies"
+position: "Product Engineer"
 date: 2020-07-01
 endDate: 2023-07-31
 location: "Coimbatore, Tamil Nadu, India"

@@ -1,11 +1,11 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 // Work experience collection
 const work = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
+    position: z.string(),
+    company: z.string(),
     date: z.coerce.date(),
     endDate: z.union([z.coerce.date(), z.string()]).optional(),
     location: z.string(),
@@ -18,7 +18,7 @@ const work = defineCollection({
 
 // Blog posts collection
 const blog = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -29,7 +29,7 @@ const blog = defineCollection({
 
 // Projects collection
 const projects = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),

@@ -18,19 +18,19 @@ const work = Astro.props;
 ---
 
 <PageLayout
-  title={`${work.data.title} - Work Experience`}
-  description={work.data.description}
+  title={`${work.data.company} - Work Experience`}
+  description={work.data.position}
 >
   <section class="animate py-12">
     <BackToPrev href="/work" text="Work Experience" />
 
     <header class="mb-8">
       <h1 class="text-3xl font-semibold text-primary mb-2">
-        {work.data.title}
+        {work.data.position}
       </h1>
 
       <p class="text-lg font-medium text-primary mb-2">
-        {work.data.description}
+        {work.data.company}
       </p>
 
       <p class="text-sm text-secondary">

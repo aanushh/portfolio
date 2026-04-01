@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import WorkTimelineDashedDots from "./WorkTimelineDashedDots.astro";
+import Link from "@components/Link.astro";
+
+const works = (await getCollection("work"))
+  .filter((work) => !work.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
+
+function formatDateRange(
+  startDate: Date,
+  endDate: Date | string | undefined,
+): string {
+  const start = new Date(startDate).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
+  if (!endDate) {
+    return `${start} - Present`;
+  }
+
+  if (endDate instanceof Date) {
+    const end = new Date(endDate).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    return `${start} - ${end}`;
+  }
+
+  return `${start} - ${endDate}`;
+}
+---
+
+<section class="animate py-12">
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="text-xl font-bold text-primary">Work Experience</h2>
+    <Link
+      href="/work"
+      class="text-sm text-secondary hover:text-accent transition-colors"
+    >
+      View all →
+    </Link>
+  </div>
+
+  <div class="relative space-y-6">
+    <WorkTimelineDashedDots />
+
+    {
+      works.map((work, index) => (
+        <Link href={`/work/${work.slug}`} class="block group pl-12 relative">
+          <div class="absolute left-3.5 top-7 size-3 rounded-full bg-accent ring-4 ring-[var(--bg-primary)] z-10" />
+
+          <div class="border border-[var(--border)] rounded-lg p-5 transition-all duration-200 hover:border-accent hover:shadow-[0_2px_12px_rgba(180,140,20,0.12)]">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+              <div>
+                <h3 class="text-lg font-semibold text-primary group-hover:text-accent transition-colors">
+                  {work.data.position}
+                </h3>
+                <p class="text-sm text-secondary mt-0.5 italic">
+                  {work.data.company}
+                </p>
+              </div>
+              <span class="text-xs mt-1 text-secondary font-medium whitespace-nowrap">
+                {formatDateRange(work.data.date, work.data.endDate)}
+              </span>
+            </div>
+
+            {/* Location */}
+            <p class="text-sm text-secondary mb-3">📍 {work.data.location}</p>
+
+            {/* Short Summary */}
+            <p class="text-primary text-sm leading-relaxed line-clamp-2">
+              {work.data.shortSummary}
+            </p>
+          </div>
+        </Link>
+      ))
+    }
+  </div>
+</section>
