@@ -1,7 +1,8 @@
 ---
-title: "JSON Selector Language (JSL)"
+title: "JSL"
 description: "JSON Selector Language, or JSL, can be used to dynamically select JSON values. It is meant for use in client-side environments like the browser where bandwidth and performance constraints exist."
 date: 2022-06-01
+featured: true
 github: "https://github.com/zalora/json-selector-lang"
 demo: "https://www.npmjs.com/package/json-selector-lang"
 technologies:

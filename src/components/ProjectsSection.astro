@@ -1,8 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Link from "./Link.astro";
+import ProjectCard from "./ProjectCard.astro";
 
-// Get recent projects (3 most recent)
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -12,31 +11,22 @@ const projects = (await getCollection("projects"))
 <section class="animate pt-8 pb-16">
   <div class="flex items-center justify-between mb-6">
     <h2 class="text-xl font-bold text-primary">Recent Projects</h2>
-    <Link
+    <a
       href="/projects"
       class="text-sm text-secondary hover:text-accent transition-colors"
     >
       View all →
-    </Link>
+    </a>
   </div>
   {
     projects.length > 0 ? (
-      <div class="space-y-4">
-        {projects.map((project) => (
-          <Link href={`/projects/${project.slug}`} class="block group">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <h3 class="font-semibold text-primary group-hover:text-accent transition-colors">
-                {project.data.title}
-              </h3>
-              <span class="text-sm text-secondary">
-                {new Date(project.data.date).toLocaleDateString("en-US", {
-                  month: "short",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
-            <p class="text-sm text-primary mt-1">{project.data.description}</p>
-          </Link>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {projects.map((project, index) => (
+          <ProjectCard
+            project={project}
+            gradientIndex={index}
+            featured={index === 2 ? false : project.data.featured}
+          />
         ))}
       </div>
     ) : (

@@ -37,6 +37,8 @@ const projects = defineCollection({
     technologies: z.array(z.string()),
     github: z.string().optional(),
     demo: z.string().optional(),
+    image: z.string().optional(),
+    featured: z.boolean().default(false),
     draft: z.boolean().default(false),
   }),
 });
