@@ -25,7 +25,7 @@ const posts = (await getCollection("blog"))
         {posts.map((post) => (
           <Link href={`/blog/${post.slug}`} class="block group">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <h3 class="font-medium text-primary group-hover:text-accent transition-colors">
+              <h3 class="font-bold text-primary group-hover:text-accent transition-colors">
                 {post.data.title}
               </h3>
               <span class="text-sm text-secondary">
