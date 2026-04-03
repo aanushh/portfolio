@@ -1,8 +1,8 @@
 ---
 company: "ProPlus Logics Solutions"
 position: "Intern"
-date: 2019-06-01
-endDate: "2019-07-01"
+date: 2018-04-01
+endDate: "2018-05-01"
 location: "Coimbatore, Tamil Nadu, India"
 shortSummary: "My first internship where I learned the basics of web development and built a complete inventory management application from scratch."
 summary:
