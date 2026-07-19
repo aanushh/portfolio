@@ -15,12 +15,14 @@ const writingEntries = await getWritings()
 <BaseLayout title={title} description={description}>
   <Prose>
     <h1>Writings</h1>
-    <div class="not-prose flex flex-col gap-y-8">
+    <!-- <div class="not-prose flex flex-col gap-y-8">
       {
         writingEntries.map((writingEntry) => (
           <WritingCard writingEntry={writingEntry} />
         ))
       }
-    </div>
+    </div> -->
+
+    <i class="text-foreground">Brewing content, will be added soon.</i>
   </Prose>
 </BaseLayout>
