@@ -27,10 +27,13 @@ const isActive = (href: string) =>
         </a>
       ))
     }
+    <div class="items-center justify-end ml-auto flex md:hidden">
+      <ThemeSwitcher />
+    </div>
   </nav>
 
   <div
-    class="flex items-center justify-end border-b border-border/50 py-3 md:mt-auto md:border-b-0 md:pr-8 md:pb-16"
+    class="items-center justify-end border-b border-border/50 py-3 md:mt-auto md:border-b-0 md:pr-8 md:pb-16 hidden md:flex"
   >
     <ThemeSwitcher />
   </div>
