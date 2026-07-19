@@ -1,64 +1,100 @@
 ---
 title: "About"
-description: "What Sidey is and why it exists."
+description: "Background, skills, and experience of Anush kumar N."
 ---
 
-import Figure from "@components/mdx/Figure.astro"
+import { Icon } from "astro-icon/components"
 
-**Sidey** started from a simple want, a personal site that doesn't get in the way. A clean, quiet place to write and share things on the internet.
+## Professional Summary
 
-Not built to impress at first glance. No big hero sections or animated gradients. They are fun to set up for a while, but somewhere between configuring the integration or adjusting the layout and design, the writing stops.
+Software Engineer with over 5 years of experience in e-commerce and fintech. I enjoy solving complex problems — migrating legacy systems to modern architectures, optimizing infrastructure costs, and building tools that make teams more productive.
 
-Sidey is a response to that. Keep it small, direct, and just write.
+## Skills
 
-## Minimal by design
+<div class="not-prose my-6 grid gap-4 sm:grid-cols-2">
 
-Sidey is a small project intentionally. Few files and little styling. The codebase is meant to be readable and easy to modify.
+<div class="rounded-sm border border-border p-4">
+  <div class="mb-3 flex items-center gap-2 text-sm font-medium text-foreground">
+    <Icon name="ph:code" size={18} class="text-muted-foreground" /> Frontend & Core
+  </div>
+  <div class="flex flex-wrap gap-1.5">
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">TypeScript</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">React</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Next.js</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">HTML5/CSS3</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Tailwind CSS</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Redux / Zustand</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Storybook</span>
+  </div>
+</div>
 
-## Typography first
+<div class="rounded-sm border border-border p-4">
+  <div class="mb-3 flex items-center gap-2 text-sm font-medium text-foreground">
+    <Icon name="ph:bug-beetle" size={18} class="text-muted-foreground" /> Testing & Quality
+  </div>
+  <div class="flex flex-wrap gap-1.5">
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Jest</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Vitest</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">React Testing Library</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Sentry</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Web Accessibility</span>
+  </div>
+</div>
 
-The reading experience is the whole design. Sidey uses [Geist] for body text and [Geist Mono] for code block and inline snippets.
+<div class="rounded-sm border border-border p-4">
+  <div class="mb-3 flex items-center gap-2 text-sm font-medium text-foreground">
+    <Icon name="ph:cloud" size={18} class="text-muted-foreground" /> DevOps & System Design
+  </div>
+  <div class="flex flex-wrap gap-1.5">
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Micro-Frontend Patterns</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">REST / GraphQL</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Docker</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">CI/CD (GitHub Actions, Jenkins)</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">AWS CloudFront</span>
+  </div>
+</div>
 
-## Expressive Code
+<div class="rounded-sm border border-border p-4">
+  <div class="mb-3 flex items-center gap-2 text-sm font-medium text-foreground">
+    <Icon name="ph:chart-line" size={18} class="text-muted-foreground" /> Observability & Tools
+  </div>
+  <div class="flex flex-wrap gap-1.5">
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Grafana</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Elastic APM</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Segment</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Mixpanel</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Contentful (Headless CMS)</span>
+    <span class="rounded-sm bg-accent px-2 py-0.5 text-xs text-accent-foreground">Optimizely</span>
+  </div>
+</div>
 
-Code blocks are powered by [Expressive Code], a syntax highlighter built for clarity and readability. It supports code folding and line highlighting.
+</div>
 
-## Flexoki color scheme
+## Experience
 
-Sidey uses [Flexoki], a color palette designed by [Steph Ango].
-Inspired by ink and paper, it is warm, low-contrast, and easy on the eyes for long reading sessions.
-Available in both light and dark modes.
+### Zalora Group — Software Engineer II
+*July 2023 – January 2026 | Remote*
 
-## Image lightbox
+- Led migration of Login, Signup, and core modules from PHP to Next.js — delivered in 6 weeks with zero rollbacks
+- Architected Contentful + AWS CloudFront video delivery, removing SDK dependencies and eliminating single point of failure
+- Restructured Segment event tracking, reducing monthly tracked users from 7.7M to 1.9M and cutting SaaS costs significantly
+- Built 3 Contentful App Framework tools automating marketing workflows, saving 20+ hours of manual work per week
+- Maintained Auth and Segment modules with Sentry monitoring and alerting
 
-Click any image in Sidey and it opens in a full-screen overlay, no extra setup needed. Either using the Figure component, which supports captions, or just a plain markdown image.
+### Codingmart Technologies — Product Engineer
+*July 2020 – July 2023 | Coimbatore, India*
 
-<Figure
-  src="https://images.unsplash.com/photo-1691631117201-c4c63d1e2c54?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  alt="Shiny Fan Fern or Umbrella fern, Sticherus flabbelatus, growing wild on the side of the road near Kuranda, in Australia."
->
-  Photo by [David Clode](https://unsplash.com/@davidclode). Click to open in
-  lightbox.
-</Figure>
+- Built the first headless design system for Zalora, enabling 70% faster deployment of category pages
+- Created **JSL (JSON Selector Language)**, a type-safe extraction tool preventing production crashes from unexpected API responses
+- Integrated Multisys and Bridger Pay payment gateways for optimized checkout flow
+- Mentored 15 junior developers — 10 converted to full-time roles — and supported campus recruitment at 10+ universities
 
-## Everything else
+## Achievement
 
-Sidey also comes with a few smaller things that are good to have:
-
-- Single config file
-- Automatically open external links in new tab
-- RSS Feed, Sitemap, and a 404 page
-
----
-
-Built with [Astro] and [Tailwind CSS] by [Odhy Pradhana]. Source on [GitHub].
-
-[Geist]: https://vercel.com/font
-[Geist Mono]: https://vercel.com/font?type=mono
-[Expressive Code]: https://expressive-code.com/
-[Flexoki]: https://stephango.com/flexoki
-[Steph Ango]: https://stephango.com
-[Astro]: https://astro.build
-[Tailwind CSS]: https://tailwindcss.com/
-[Odhy Pradhana]: https://odhyp.com
-[GitHub]: https://github.com/odhyp/astro-sidey
+<div class="not-prose flex items-start gap-2 text-sm">
+  <Icon name="ph:file-text" size={20} class="mt-0.5 shrink-0 text-muted-foreground" />
+  <span>
+    Published a research paper in
+    {' '}<a href="https://www.warse.org/IJETER/static/pdf/file/ijeter138102020.pdf" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 transition-colors hover:text-foreground">International Journal of Emerging Technologies and Engineering Research</a>
+  </span>
+</div>

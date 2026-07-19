@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components"
+---
+
+<button
+  id="back-to-top"
+  aria-label="Back to top"
+  class="fixed bottom-6 right-6 z-40 hidden size-10 items-center justify-center rounded-sm border border-border bg-background text-muted-foreground shadow-sm transition-all duration-200 hover:border-foreground/30 hover:text-foreground md:bottom-8 md:right-8"
+>
+  <Icon name="ph:arrow-up" size={20} />
+</button>
+
+<script>
+  const init = () => {
+    const btn = document.getElementById("back-to-top")
+    if (!btn) return
+
+    const handleScroll = () => {
+      btn.classList.toggle("hidden", window.scrollY <= 300)
+      btn.classList.toggle("flex", window.scrollY > 300)
+    }
+
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    })
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+  }
+
+  document.addEventListener("astro:page-load", init)
+</script>

@@ -9,16 +9,18 @@ export const sideyConfig = {
    */
   site: {
     // The main title displayed in browser tabs and search engine results
-    title: "Astro Sidey",
+    title:
+      "aanushh | Software Engineer building scalable Architectures & Seamless Digital Experiences",
 
     // A short fallback summary of your site used for SEO and social share cards
-    description: "A minimal, content-focused Astro theme for personal sites.",
+    description:
+      "Portfolio and writings of Anush kumar N — a Software Engineer specializing in TypeScript, React, and scalable architectures.",
 
     // The production domain where your site is deployed (no trailing slash)
-    url: "https://sidey.odhyp.com",
+    url: "https://portfolio.aanushh.com",
 
     // Your name, utilized in copyright strings and author meta tags
-    author: "Odhy Pradhana",
+    author: "Anush kumar N",
 
     // The primary language attribute for HTML accessibility engines (e.g., "en", "id")
     locale: "en",
@@ -33,8 +35,8 @@ export const sideyConfig = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "Writings", href: "/writings" },
+    { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
-    { label: "RSS", href: "/rss.xml" },
   ],
 }
 

@@ -2,7 +2,9 @@
 import { type CollectionEntry, render } from "astro:content"
 
 import SinglePage from "@layouts/pages/SinglePage.astro"
-import { getPages } from "@utils/getContent"
+import Prose from "@components/common/Prose.astro"
+import WritingCard from "@components/section/writings/WritingCard.astro"
+import { getPages, getWritings } from "@utils/getContent"
 
 export async function getStaticPaths() {
   const pages = getPages()
@@ -19,8 +21,27 @@ interface Props {
 
 const { page } = Astro.props
 const { Content } = await render(page)
+
+const isHome = page.id === "home"
+let recentWritings: Awaited<ReturnType<typeof getWritings>> = []
+if (isHome) {
+  const allWritings = await getWritings()
+  recentWritings = allWritings.slice(0, 2)
+}
 ---
 
 <SinglePage frontmatter={page}>
   <Content />
+  {
+    isHome && recentWritings.length > 0 && (
+      <div class="not-prose mt-16">
+        <h2 class="mb-6 text-lg font-semibold text-foreground">
+          Recent Writings
+        </h2>
+        <div class="flex flex-col gap-y-6">
+          {recentWritings.map((entry) => <WritingCard writingEntry={entry} />)}
+        </div>
+      </div>
+    )
+  }
 </SinglePage>
