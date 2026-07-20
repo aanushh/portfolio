@@ -1,0 +1,57 @@
+---
+title: "How to install yarn quickly (macOS)"
+description: "Quick steps to install Yarn on macOS using Homebrew or the official installation script."
+date: 2020-10-21
+tags: ["macos", "yarn", "brew"]
+draft: false
+---
+
+<img src="/images/writings/install-yarn.png" alt="Yarn" width="504" height="406" loading="lazy" data-lightbox />
+
+[https://imgs.developpaper.com/imgs/2806960172-5d80968b24e1a_articlex.png](https://imgs.developpaper.com/imgs/2806960172-5d80968b24e1a_articlex.png)
+
+I was really in **hurry** to install yarn and start to work, but when I realised that's not the case i.e we can't install it in a **hurry** 😅. So now let me give you a glimpse of doing it.
+
+> To install yarn with brew (the best way according to me). Also to mention please read this article completely and know what you are doing.
+
+```bash
+brew install yarn
+```
+
+This will allow you to install the latest version of yarn via home brew. Also please check whether you have any other yarn versions installed before doing this or else you will be in trouble.
+
+To check the list of versions you have:
+
+```bash
+brew list --versions yarn
+```
+
+> Also unlinking the rest before you install will be a wise choice too. 👍
+
+```bash
+brew unlink yarn
+```
+
+If you are not the person using brew then you can use the installation script provided.
+
+```bash
+curl -o- -L https://yarnpkg.com/install.sh | bash
+```
+
+> If you want any specific version, then you can mention the version that you need in the script and here you go.
+
+```bash
+curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version [version]
+```
+
+And also if you want to switch the versions, then we have solution for that also without using any fancy version manager. Home brew has the support for it. (Make sure you have previous versions or else this will show nothing)
+
+```bash
+brew switch yarn [old_version]
+```
+
+> ***Note***: Please remove the brackets [] while mentioning the versions 😄
+
+If you find this article interesting and useful, Please do give claps and share it with others. Also if you find any flaws in this article please let me know and i would like to make the changes and improve.
+
+[Click here to contact me](https://www.linkedin.com/in/anush-kumar-n-b48778145/)

@@ -1,0 +1,41 @@
+---
+title: "Add global variable in our Projects (Javascript)"
+description: "A simple technique to add custom global variables to your JavaScript projects using window and Object.assign()."
+date: 2021-01-08
+tags: ["javascript", "global-variable"]
+draft: false
+---
+
+<img src="/images/writings/global-variable-01.jpeg" alt="JS image" width="750" height="375" loading="lazy" data-lightbox />
+
+I have seen some fancy variables in various web application where when we go to developer console and we can find their own global variable.
+
+I got surprised and I was eagerly waiting to find how to do it. At last I found a simple way to do it.
+
+Now let's see how to do it, You need prior knowledge about Javascript global variable and Object.assign() to know the syntax and working behind it.
+
+Now just to make you understand, let's assume that we need a variable named Superman. So this will be the code to add that Superman as a global variable.
+
+```javascript
+let Superman = {
+  name: 'Kal-El',
+  fatherName: 'Jor-El',
+  motherName: 'Lara',
+  origin: 'Kryptonian',
+}
+
+window.Superman = Object.assign({}, window.Superman, Superman);
+// the above line will merge window.Superman & Superman objects
+```
+
+<img src="/images/writings/global-variable-02.png" alt="Console output" width="762" height="214" loading="lazy" data-lightbox />
+
+(**Make sure you either run this code in developer console or in a JS file and then try this.**) Now when you go to developer console and type Superman you will see the magic.
+
+### Yay!!
+
+<img src="/images/writings/global-variable-03.png" alt="Superman in console" width="761" height="146" loading="lazy" data-lightbox />
+
+**Note:** When playing with global variables please know that you are going to load the window object with your values and please be very careful while doing this because it might affect the performance and do know the consequences too.
+
+*If you find this useful show it with claps and share it with others, I have also blogged other various useful things in medium please do check it out, thanks* 😄

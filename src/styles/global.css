@@ -303,3 +303,10 @@
     @apply text-muted-foreground/75;
   }
 }
+
+article.prose img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background-color: var(--color-muted);
+}
