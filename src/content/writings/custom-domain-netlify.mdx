@@ -1,12 +1,19 @@
 ---
-title: "Configure Custom domain name & SSL certificate for a Netlify website"
+title: "Configure custom Domain name & SSL certificate for a Netlify website"
 description: "A step-by-step guide to setting up a custom domain and free SSL certificate for a Netlify-hosted website."
 date: 2022-04-24
 tags: ["netlify", "custom-domain", "free-ssl", "hosting"]
 draft: false
 ---
 
-<img src="/images/writings/custom-domain-01.png" alt="Custom domain setup" width="1024" height="538" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-01.png"
+  alt="Custom domain setup"
+  width="1024"
+  height="538"
+  loading="lazy"
+  data-lightbox
+/>
 
 I wanted my [Netlify](https://www.netlify.com/) hosted website to have a custom domain name. Since I won't be doing this process daily, I might forget this process and I don't want to waste my time on searching for a how-to.
 
@@ -14,15 +21,36 @@ First make sure that you have a website and you hosted it via [Netlify](https://
 
 Go to the site overview of the site which you want to add the custom domain and select Domain settings
 
-<img src="/images/writings/custom-domain-02.png" alt="Domain settings" width="1024" height="662" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-02.png"
+  alt="Domain settings"
+  width="1024"
+  height="662"
+  loading="lazy"
+  data-lightbox
+/>
 
 Now click on add a custom domain option, you will see a section like this 👇
 
-<img src="/images/writings/custom-domain-03.png" alt="Add custom domain" width="1024" height="570" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-03.png"
+  alt="Add custom domain"
+  width="1024"
+  height="570"
+  loading="lazy"
+  data-lightbox
+/>
 
 Add the domain name in the input box and click on verify. After the verification, [Netlify](https://www.netlify.com/) will show a prompt regarding the domain is already registered. You are now ready to click on the option Add domain
 
-<img src="/images/writings/custom-domain-04.png" alt="Verify domain" width="1024" height="549" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-04.png"
+  alt="Verify domain"
+  width="1024"
+  height="549"
+  loading="lazy"
+  data-lightbox
+/>
 
 After this, we need to verify the DNS configuration. Go to the website where you purchased the domain and click on name servers. In my case I used [Freenom](https://my.freenom.com/). So Login to [Freenom](https://my.freenom.com/) > goto [My domains](https://my.freenom.com/clientarea.php?action=domains) > Click on Manage Domain > Under Management tools > Click on Nameservers.
 
@@ -30,7 +58,14 @@ You will be provided with 2 options, We are going to use the second one i.e Use 
 
 Go to [Netlify](https://www.netlify.com/), click on verify the DNS and copy the list of DNS server names and go back to [Freenom](https://my.freenom.com/) and paste the server names one by one in the list of input boxes they offer.
 
-<img src="/images/writings/custom-domain-05.png" alt="DNS servers" width="1024" height="567" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-05.png"
+  alt="DNS servers"
+  width="1024"
+  height="567"
+  loading="lazy"
+  data-lightbox
+/>
 
 Once you save the configuration for the Nameserver, then [Netlify](https://www.netlify.com/) will automatically reflect the changes and now the custom domain will direct to the [Netlify](https://www.netlify.com/) site.
 
@@ -40,7 +75,14 @@ Now lets add SSL certificate for the [Freenom](https://my.freenom.com/) site. By
 
 Let's head to [Cloudflare](https://www.cloudflare.com/). Create an account and click on Add site option and add the domain name that you have purchased in the input box shown.
 
-<img src="/images/writings/custom-domain-06.png" alt="Cloudflare add site" width="1024" height="421" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-06.png"
+  alt="Cloudflare add site"
+  width="1024"
+  height="421"
+  loading="lazy"
+  data-lightbox
+/>
 
 After adding the site, [Cloudflare](https://www.cloudflare.com/) will ask you to select a plan, Click on the Free plan and proceed next. Now you will be asked to review the [A, CNAME, ALIAS, and URL records](https://support.dnsimple.com/articles/differences-between-a-cname-alias-url/). I think the default configuration is fine, Click continue.
 
@@ -48,7 +90,14 @@ Now you will be asked to remove the Nameservers that you have already configured
 
 After removing it, you can replace the existing Nameservers with the [Cloudflare](https://www.cloudflare.com/)'s Nameservers. By doing so we get to enjoy [Cloudflare](https://www.cloudflare.com/)'s security features.
 
-<img src="/images/writings/custom-domain-07.png" alt="Cloudflare nameservers" width="730" height="756" loading="lazy" data-lightbox />
+<img
+  src="/images/writings/custom-domain-07.png"
+  alt="Cloudflare nameservers"
+  width="730"
+  height="756"
+  loading="lazy"
+  data-lightbox
+/>
 
 🎉 Now the configuration is done and enjoy the benefits of a Website with Fast, Easy-to-use DNS, Unmetered DDoS Protection for Layers 3–7, CDN, Universal SSL Certificate, Free Managed Ruleset and a free domain name.
 
