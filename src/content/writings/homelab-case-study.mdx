@@ -1,0 +1,257 @@
+---
+title: "Self-Hosted Homelab: The Three States I Was Missing"
+description: "A short case study of wiring Docker, Caddy, Cloudflare and AdGuard Home together."
+date: 2026-08-15
+tags: ["self-hosting", "home-lab"]
+draft: false
+---
+
+I wanted a boring self-hosted setup:
+
+- Docker Compose for apps
+- Caddy as the reverse proxy
+- Cloudflare for DNS
+- wildcard TLS through DNS-01
+- AdGuard Home for LAN DNS and ad blocking
+- Tailscale for private remote access
+- Watchtower for selected automatic updates
+
+The basic architecture is:
+
+```text
+Client
+  |
+  v
+ DNS
+  |
+  v
+ Caddy
+  |
+  | homelab Docker network
+  v
+Application
+```
+
+## The app pattern
+
+A normal app joins the shared Docker network:
+
+```yaml
+services:
+  app:
+    image: <image>
+    container_name: <app>
+    restart: unless-stopped
+    expose:
+      - "3000"
+    networks:
+      - homelab
+
+networks:
+  homelab:
+    external: true
+```
+
+Then Caddy:
+
+```caddyfile
+app.<domain> {
+    reverse_proxy app:3000
+}
+```
+
+No need to publish every application port on the host.
+
+## The important lesson
+
+The thing I kept confusing was **configuration state vs container state vs application state**.
+
+There are really three questions:
+
+```text
+What is on disk?
+        ↓
+What does the running container have?
+        ↓
+What is the process actually using?
+```
+
+For Caddy:
+
+```bash
+cat Caddyfile
+
+docker exec caddy cat /etc/caddy/Caddyfile
+
+docker exec caddy caddy adapt   --config /etc/caddy/Caddyfile   --pretty
+```
+
+A changed file on the host doesn't mean the running process has loaded it.
+
+For a Caddyfile change:
+
+```bash
+docker exec caddy caddy reload   --config /etc/caddy/Caddyfile
+```
+
+For environment/image/Compose changes, recreate the container instead.
+
+## Cloudflare + wildcard TLS
+
+The wildcard certificate uses the Cloudflare DNS challenge:
+
+```caddyfile
+*.<domain> {
+    tls {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+        resolvers 1.1.1.1
+    }
+}
+```
+
+The `1.1.1.1` resolver is for Caddy's DNS-01 flow. It doesn't mean AdGuard can't remain the LAN resolver.
+
+The `_acme-challenge` TXT record is temporary, so an NXDOMAIN after successful issuance is not surprising.
+
+## AdGuard Home
+
+AdGuard has two separate jobs:
+
+```text
+DNS:
+LAN client -> AdGuard :53
+
+Web UI:
+Browser -> Caddy -> adguard:3000
+```
+
+This was another useful distinction.
+
+The DNS service needs a host port. The web UI can simply be on the shared Docker network and reverse proxied by Caddy.
+
+A LAN DNS rewrite can make:
+
+```text
+app.<domain> -> <homelab LAN IP>
+```
+
+while keeping the normal hostname and HTTPS.
+
+## The blank UI incident
+
+One of the more useful bugs was AdGuard's UI.
+
+At one point:
+
+```bash
+curl -I https://adguard.<domain>
+```
+
+returned:
+
+```text
+HTTP/2 200
+```
+
+But the browser showed nothing.
+
+The HAR showed the response body was empty:
+
+```text
+content-length: 0
+```
+
+So the investigation changed from "is HTTPS working?" to "what is actually being returned?"
+
+The useful tests were:
+
+```bash
+curl -s https://adguard.<domain> | head -c 1000
+```
+
+and from inside Caddy:
+
+```bash
+docker exec caddy sh -c '
+curl -sS -D- "http://adguard:3000/" -o /tmp/body
+wc -c /tmp/body
+'
+```
+
+The lesson is simple:
+
+**HTTP 200 is not the same thing as a working application.**
+
+For browser apps, check:
+
+```text
+DNS
+ -> TLS
+ -> status code
+ -> response body
+ -> JS/CSS assets
+ -> browser UI
+```
+
+## Watchtower
+
+I also wondered whether Watchtower needed to be on the application network.
+
+No.
+
+It uses the Docker socket:
+
+```text
+Watchtower -> /var/run/docker.sock -> Docker
+```
+
+while Caddy uses:
+
+```text
+Caddy -> homelab -> Application
+```
+
+Different relationship, different reason for networking.
+
+## What I would do next time
+
+Adding an app is now:
+
+```text
+1. Put it on homelab.
+2. Don't publish its web port unless necessary.
+3. Test it directly from Caddy.
+4. Add the Caddy route.
+5. Validate/adapt the config.
+6. Reload Caddy.
+7. Configure DNS if needed.
+8. Test HTTPS.
+9. Test the actual GET response.
+10. Open the browser.
+```
+
+And debugging follows:
+
+```text
+host config
+  ↓
+container config
+  ↓
+process
+  ↓
+Docker network
+  ↓
+DNS
+  ↓
+TLS
+  ↓
+Caddy
+  ↓
+HTTP body
+  ↓
+browser
+```
+
+That's probably the main thing worth remembering from this setup.
+
+The services themselves are straightforward. The useful part was learning to identify **which state is actually wrong** before trying to fix it.
